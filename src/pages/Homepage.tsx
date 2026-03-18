@@ -21,46 +21,49 @@ const Homepage = () => {
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden bg-primary/5">
-        {/* Dual background images */}
-        <div className="absolute inset-0 flex">
-          <div className="w-1/2 h-full relative">
-            <img src={heroTail} alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+      <section className="relative overflow-hidden" style={{ minHeight: '520px' }}>
+        {/* Two tilted/overlapping images behind content */}
+        <div className="absolute inset-0">
+          {/* Left image - tilted */}
+          <div className="absolute left-0 top-8 w-[48%] h-[90%] rounded-2xl overflow-hidden shadow-2xl"
+               style={{ transform: 'rotate(-3deg) translateX(-5%)' }}>
+            <img src={heroTail} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-primary/30" />
           </div>
-          <div className="w-1/2 h-full relative">
-            <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-15 rounded-tl-2xl" />
+          {/* Right image - tilted opposite */}
+          <div className="absolute right-0 top-4 w-[55%] h-[95%] rounded-2xl overflow-hidden shadow-2xl"
+               style={{ transform: 'rotate(2deg) translateX(5%)' }}>
+            <img src={heroBg} alt="" className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-primary/20" />
           </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-primary/5 to-background" />
+          {/* Overlay to let text pop */}
+          <div className="absolute inset-0 bg-background/60" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-8 py-24 flex items-center gap-12">
-          <div className="flex-1 space-y-6">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold">
-              <Plane className="w-4 h-4" /> Scandinavian Airlines · Roblox
-            </div>
-            <h1 className="text-5xl font-black leading-tight text-foreground">
-              Welcome to SAS
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-xl">
-              Scandinavian Airlines on Roblox. Join our community, fly with us, and be part of the crew.
-            </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all active:scale-[0.98]"
-              >
-                <ExternalLink className="w-4 h-4" /> Join Roblox Group
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full border-2 border-primary/20 text-primary hover:bg-primary/5 transition-all"
-              >
-                <ExternalLink className="w-4 h-4" /> Discord Server
-              </a>
-            </div>
+        {/* Content */}
+        <div className="relative z-10 max-w-7xl mx-auto px-8 py-28 text-center">
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
+            <Plane className="w-4 h-4" /> Scandinavian Airlines · Roblox
           </div>
-          <div className="hidden lg:block flex-1">
-            <img src={heroBg} alt="SAS Aircraft" className="w-full rounded-2xl shadow-sas object-cover" />
+          <h1 className="text-5xl md:text-6xl font-black leading-tight text-foreground">
+            Welcome to <span className="text-primary">SAS</span>
+          </h1>
+          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
+            Scandinavian Airlines on Roblox. Join our community, fly with us, and be part of the crew.
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all active:scale-[0.98]"
+            >
+              <ExternalLink className="w-4 h-4" /> Join Roblox Group
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full border-2 border-primary/20 text-primary hover:bg-primary/5 transition-all"
+            >
+              <ExternalLink className="w-4 h-4" /> Discord Server
+            </a>
           </div>
         </div>
       </section>
