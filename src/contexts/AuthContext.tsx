@@ -7,7 +7,14 @@ interface AuthContextType {
   logout: () => void;
 }
 
-const AuthContext = createContext<AuthContextType | null>(null);
+const defaultAuth: AuthContextType = {
+  isLoggedIn: false,
+  username: "",
+  login: () => {},
+  logout: () => {},
+};
+
+const AuthContext = createContext<AuthContextType>(defaultAuth);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -22,8 +29,4 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) throw new Error("useAuth must be used within AuthProvider");
-  return context;
-};
+export const useAuth = () => useContext(AuthContext);
