@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Plane, ExternalLink } from "lucide-react";
 import sasLogo from "@/assets/sas.svg";
 import heroBg from "@/assets/hero-bg.png";
+import heroTail from "@/assets/hero-tail.png";
 
 const Homepage = () => {
   return (
@@ -21,14 +22,15 @@ const Homepage = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden bg-primary/5">
-        {/* Background image */}
-        <div className="absolute inset-0">
-          <img
-            src={heroBg}
-            alt=""
-            className="w-full h-full object-cover opacity-15"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-primary/5 to-background" />
+        {/* Dual background images */}
+        <div className="absolute inset-0 flex">
+          <div className="w-1/2 h-full relative">
+            <img src={heroTail} alt="" className="absolute inset-0 w-full h-full object-cover opacity-15" />
+          </div>
+          <div className="w-1/2 h-full relative">
+            <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover opacity-15 rounded-tl-2xl" />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-primary/5 to-background" />
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto px-8 py-24 flex items-center gap-12">
@@ -58,11 +60,7 @@ const Homepage = () => {
             </div>
           </div>
           <div className="hidden lg:block flex-1">
-            <img
-              src={heroBg}
-              alt="SAS Aircraft"
-              className="w-full rounded-2xl shadow-sas object-cover"
-            />
+            <img src={heroBg} alt="SAS Aircraft" className="w-full rounded-2xl shadow-sas object-cover" />
           </div>
         </div>
       </section>
@@ -70,24 +68,15 @@ const Homepage = () => {
       {/* Quick Links */}
       <section className="px-8 pb-24 pt-16 max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <Link
-            to="/departures"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover hover:border-primary/20 transition-all"
-          >
+          <Link to="/departures" className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover hover:border-primary/20 transition-all">
             <h3 className="font-bold mb-1 text-foreground">Departures</h3>
             <p className="text-sm text-muted-foreground">View upcoming flights and schedules.</p>
           </Link>
-          <a
-            href="#"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover hover:border-primary/20 transition-all"
-          >
+          <a href="#" className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover hover:border-primary/20 transition-all">
             <h3 className="font-bold mb-1 text-foreground">Discord</h3>
             <p className="text-sm text-muted-foreground">Join our community server.</p>
           </a>
-          <a
-            href="#"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover hover:border-primary/20 transition-all"
-          >
+          <a href="#" className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover hover:border-primary/20 transition-all">
             <h3 className="font-bold mb-1 text-foreground">Roblox Group</h3>
             <p className="text-sm text-muted-foreground">Join SAS on Roblox.</p>
           </a>
