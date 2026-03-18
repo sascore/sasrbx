@@ -92,7 +92,6 @@ const ChartTooltip = RechartsPrimitive.Tooltip;
 const ChartTooltipContent = React.forwardRef<
   HTMLDivElement,
   any
-    }
 >(
   (
     {
