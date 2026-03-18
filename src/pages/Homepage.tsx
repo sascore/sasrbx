@@ -13,8 +13,8 @@ const Homepage = () => {
         <img
           src={heroBg}
           alt="SAS Aircraft"
-          className="w-full h-full object-cover"
-        />
+          className="w-full h-full object-cover" />
+        
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         <div className="absolute bottom-10 left-0 right-0 px-8">
           <div className="max-w-6xl mx-auto">
@@ -35,14 +35,14 @@ const Homepage = () => {
           <div className="flex items-center gap-3 flex-wrap">
             <a
               href="#"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all active:scale-[0.98]"
-            >
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all active:scale-[0.98]">
+              
               Roblox Group <ExternalLink className="w-3.5 h-3.5" />
             </a>
             <a
-              href="#"
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full border border-border text-foreground hover:bg-muted transition-all"
-            >
+
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold rounded-full border border-border text-foreground hover:bg-muted transition-all" href="https://discord.gg/hDJNMvJUX9">
+              
               Discord Server <ExternalLink className="w-3.5 h-3.5" />
             </a>
           </div>
@@ -53,8 +53,8 @@ const Homepage = () => {
       <div className="flex-1" />
 
       <SiteFooter />
-    </div>
-  );
+    </div>);
+
 };
 
 export default Homepage;
