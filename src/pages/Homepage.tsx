@@ -1,90 +1,100 @@
 import { Link } from "react-router-dom";
-import { Plane, ExternalLink } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import sasLogo from "@/assets/sas.svg";
+import heroBg from "@/assets/hero-bg.png";
 import heroTail from "@/assets/hero-tail.png";
 
 const Homepage = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-[#0a0a0a]">
       {/* Header */}
-      <header className="h-[72px] bg-background border-b border-border flex items-center justify-between px-8">
-        <img src={sasLogo} alt="SAS" className="h-7" />
-        
-
-
-
-
-
-
-        
+      <header className="h-[72px] flex items-center justify-between px-8 relative z-10">
+        <img src={sasLogo} alt="SAS" className="h-7 brightness-0 invert" />
+        <nav className="hidden md:flex items-center gap-8">
+          <Link to="/" className="text-sm font-semibold text-white/90 hover:text-white transition-colors">Home</Link>
+          <Link to="/departures" className="text-sm font-semibold text-white/60 hover:text-white transition-colors">Flights</Link>
+          <a href="#" className="text-sm font-semibold text-white/60 hover:text-white transition-colors">FAQ</a>
+          <Link to="/employee" className="inline-flex items-center gap-1.5 text-sm font-semibold text-white/60 hover:text-white transition-colors">
+            Hub <ExternalLink className="w-3.5 h-3.5" />
+          </Link>
+        </nav>
       </header>
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-8 py-24 flex items-center gap-12">
-          <div className="flex-1 space-y-6">
-            <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-1.5 rounded-full text-sm font-semibold">
-              <Plane className="w-4 h-4" /> Scandinavian Airlines · Roblox
-            </div>
-            <h1 className="text-5xl font-black leading-tight text-foreground">
-              Welcome to SAS
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-xl">
-              Scandinavian Airlines on Roblox. Join our community, fly with us, and be part of the crew.
-            </p>
-            <div className="flex items-center gap-4">
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all active:scale-[0.98]">
-                
-                <ExternalLink className="w-4 h-4" /> Join Roblox Group
-              </a>
-              <a
-                href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full border-2 border-border text-foreground hover:bg-muted transition-all">
-                
-                <ExternalLink className="w-4 h-4" /> Discord Server
-              </a>
-            </div>
-          </div>
-          <div className="hidden lg:block flex-1">
+        {/* Background images */}
+        <div className="absolute inset-0 flex">
+          <div className="w-1/2 h-full relative">
             <img
               src={heroTail}
-              alt="SAS Aircraft Tail"
-              className="w-full rounded-2xl shadow-sas object-cover" />
-            
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover opacity-60"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/40 to-[#0a0a0a]/80" />
+          </div>
+          <div className="w-1/2 h-full relative">
+            <img
+              src={heroBg}
+              alt=""
+              className="absolute inset-0 w-full h-full object-cover opacity-70 rounded-tl-2xl"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-[#0a0a0a]/30 to-[#0a0a0a]/60" />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 max-w-5xl mx-auto px-8 py-32 md:py-44 text-center">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-normal text-white leading-tight tracking-tight">
+            discover the future with <span className="font-black">SAS</span>
+          </h1>
+          <p className="mt-4 text-base md:text-lg text-white/70 max-w-2xl mx-auto">
+            discover the future of flying with <span className="font-bold text-white">SAS</span> for as a low low price of <span className="font-black text-white">0 Robux!</span>
+          </p>
+          <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
+            <a
+              href="#"
+              className="inline-flex items-center gap-3 px-8 py-4 text-sm font-bold rounded-xl bg-white text-[#0a0a0a] hover:bg-white/90 transition-all active:scale-[0.98] shadow-lg"
+            >
+              Roblox Group <ExternalLink className="w-4 h-4" />
+            </a>
+            <a
+              href="#"
+              className="inline-flex items-center gap-3 px-8 py-4 text-sm font-bold rounded-xl bg-white text-[#0a0a0a] hover:bg-white/90 transition-all active:scale-[0.98] shadow-lg"
+            >
+              Discord Server (13+) <ExternalLink className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
 
       {/* Quick Links */}
-      <section className="px-8 pb-24 max-w-4xl mx-auto">
+      <section className="px-8 py-24 max-w-4xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Link
             to="/departures"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all">
-            
-            <h3 className="font-bold mb-1">Departures</h3>
-            <p className="text-sm text-muted-foreground">View upcoming flights and schedules.</p>
+            className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all"
+          >
+            <h3 className="font-bold mb-1 text-white">Departures</h3>
+            <p className="text-sm text-white/50">View upcoming flights and schedules.</p>
           </Link>
           <a
             href="#"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all">
-            
-            <h3 className="font-bold mb-1">Discord</h3>
-            <p className="text-sm text-muted-foreground">Join our community server.</p>
+            className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all"
+          >
+            <h3 className="font-bold mb-1 text-white">Discord</h3>
+            <p className="text-sm text-white/50">Join our community server.</p>
           </a>
           <a
             href="#"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all">
-            
-            <h3 className="font-bold mb-1">Roblox Group</h3>
-            <p className="text-sm text-muted-foreground">Join SAS on Roblox.</p>
+            className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all"
+          >
+            <h3 className="font-bold mb-1 text-white">Roblox Group</h3>
+            <p className="text-sm text-white/50">Join SAS on Roblox.</p>
           </a>
         </div>
       </section>
-    </div>);
-
+    </div>
+  );
 };
 
 export default Homepage;
