@@ -28,7 +28,7 @@
 
 @layer base {
   :root {
-    --background: 222 33% 98%;
+    --background: 0 0% 100%;
     --foreground: 220 20% 10%;
 
     --card: 0 0% 100%;
@@ -64,15 +64,15 @@
     --shadow-card: 0 1px 3px 0 rgba(0, 36, 143, 0.04), 0 10px 20px -5px rgba(0, 36, 143, 0.08);
     --shadow-card-hover: 0 1px 3px 0 rgba(0, 36, 143, 0.06), 0 14px 28px -5px rgba(0, 36, 143, 0.12);
 
-    --sidebar-background: 222 60% 28%;
-    --sidebar-foreground: 0 0% 100%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 220 20% 10%;
     --sidebar-primary: 226 100% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 60% 34%;
-    --sidebar-accent-foreground: 0 0% 100%;
-    --sidebar-border: 222 50% 35%;
+    --sidebar-accent: 216 20% 95%;
+    --sidebar-accent-foreground: 220 20% 10%;
+    --sidebar-border: 214 20% 92%;
     --sidebar-ring: 226 100% 48%;
-    --sidebar-muted: 222 40% 40%;
+    --sidebar-muted: 213 10% 47%;
   }
 }
 

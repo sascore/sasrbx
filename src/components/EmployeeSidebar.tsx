@@ -11,12 +11,16 @@ const navItems = [
   { to: "/employee/settings", icon: Settings, label: "Settings" },
 ];
 
-const EmployeeSidebar = () => {
+interface EmployeeSidebarProps {
+  onNavigate?: () => void;
+}
+
+const EmployeeSidebar = ({ onNavigate }: EmployeeSidebarProps) => {
   const location = useLocation();
   const unreadCount = messages.filter((m) => !m.read).length;
 
   return (
-    <aside className="w-[260px] min-h-[calc(100vh-72px)] bg-secondary flex flex-col">
+    <aside className="w-[260px] h-full bg-background border-r border-border flex flex-col">
       <nav className="flex-1 py-4 px-3">
         <ul className="space-y-1">
           {navItems.map((item) => {
@@ -29,10 +33,11 @@ const EmployeeSidebar = () => {
                 <NavLink
                   to={item.to}
                   end={item.end}
+                  onClick={onNavigate}
                   className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
                     isActive
-                      ? "bg-sidebar-accent text-sidebar-foreground"
-                      : "text-sidebar-foreground/70 hover:bg-sidebar-accent/50 hover:text-sidebar-foreground"
+                      ? "bg-primary/10 text-primary"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
                   }`}
                 >
                   <item.icon className="w-5 h-5" strokeWidth={1.8} />
