@@ -9,14 +9,14 @@ const Homepage = () => {
       {/* Header */}
       <header className="h-[72px] bg-background border-b border-border flex items-center justify-between px-8">
         <img src={sasLogo} alt="SAS" className="h-7" />
-        <div className="flex items-center gap-4">
-          <a
-            href="#"
-            className="px-5 py-2 text-sm font-bold rounded-full border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all"
-          >
-            Join Roblox Group
-          </a>
-        </div>
+        
+
+
+
+
+
+
+        
       </header>
 
       {/* Hero */}
@@ -35,14 +35,14 @@ const Homepage = () => {
             <div className="flex items-center gap-4">
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all active:scale-[0.98]"
-              >
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full bg-primary text-primary-foreground hover:bg-primary/90 transition-all active:scale-[0.98]">
+                
                 <ExternalLink className="w-4 h-4" /> Join Roblox Group
               </a>
               <a
                 href="#"
-                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full border-2 border-border text-foreground hover:bg-muted transition-all"
-              >
+                className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold rounded-full border-2 border-border text-foreground hover:bg-muted transition-all">
+                
                 <ExternalLink className="w-4 h-4" /> Discord Server
               </a>
             </div>
@@ -51,8 +51,8 @@ const Homepage = () => {
             <img
               src={heroTail}
               alt="SAS Aircraft Tail"
-              className="w-full rounded-2xl shadow-sas object-cover"
-            />
+              className="w-full rounded-2xl shadow-sas object-cover" />
+            
           </div>
         </div>
       </section>
@@ -62,29 +62,29 @@ const Homepage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Link
             to="/departures"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all"
-          >
+            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all">
+            
             <h3 className="font-bold mb-1">Departures</h3>
             <p className="text-sm text-muted-foreground">View upcoming flights and schedules.</p>
           </Link>
           <a
             href="#"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all"
-          >
+            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all">
+            
             <h3 className="font-bold mb-1">Discord</h3>
             <p className="text-sm text-muted-foreground">Join our community server.</p>
           </a>
           <a
             href="#"
-            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all"
-          >
+            className="bg-card rounded-xl shadow-sas border border-border p-6 hover:shadow-sas-hover transition-all">
+            
             <h3 className="font-bold mb-1">Roblox Group</h3>
             <p className="text-sm text-muted-foreground">Join SAS on Roblox.</p>
           </a>
         </div>
       </section>
-    </div>
-  );
+    </div>);
+
 };
 
 export default Homepage;
