@@ -1,16 +1,12 @@
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
-import sasLogo from "@/assets/sas.svg";
 import { scheduledFlights } from "@/data/mockData";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const DeparturesPage = () => (
-  <div className="min-h-screen bg-background">
-    <header className="h-[72px] bg-card border-b border-border flex items-center justify-between px-8">
-      <Link to="/">
-        <img src={sasLogo} alt="SAS" className="h-7" />
-      </Link>
-    </header>
-    <div className="max-w-4xl mx-auto px-8 py-12">
+  <div className="min-h-screen bg-background flex flex-col">
+    <SiteHeader />
+    <div className="max-w-4xl mx-auto px-8 py-12 flex-1">
       <h1 className="text-3xl font-bold mb-6">Departures</h1>
       <div className="bg-card rounded-xl shadow-sas border border-border overflow-hidden">
         <table className="w-full text-sm">
@@ -49,6 +45,7 @@ const DeparturesPage = () => (
         </table>
       </div>
     </div>
+    <SiteFooter />
   </div>
 );
 
