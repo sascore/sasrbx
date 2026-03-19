@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import sasEmployeeLogo from "@/assets/sasemployee.svg";
 import GlobeIcon from "./GlobeIcon";
 import { useAuth } from "@/contexts/AuthContext";
@@ -19,7 +20,20 @@ interface EmployeeHeaderProps {
 const EmployeeHeader = ({ onMenuToggle, sidebarOpen }: EmployeeHeaderProps) => {
   const [langOpen, setLangOpen] = useState(false);
   const [selectedLang, setSelectedLang] = useState("en");
-  const { isLoggedIn, login, logout } = useAuth();
+  const { isLoggedIn, user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/employee/login", { replace: true });
+  };
+
+  const getAvatarUrl = () => {
+    if (user?.avatar && user?.id) {
+      return `https://cdn.discordapp.com/avatars/${user.id}/${user.avatar}.png?size=64`;
+    }
+    return null;
+  };
 
   return (
     <header className="h-[72px] bg-background border-b border-border flex items-center justify-between px-6 relative z-50">
@@ -72,17 +86,37 @@ const EmployeeHeader = ({ onMenuToggle, sidebarOpen }: EmployeeHeaderProps) => {
           )}
         </div>
 
-        {/* Login / Logout Button */}
+        {/* User info + Login/Logout */}
         {isLoggedIn ? (
-          <button
-            onClick={logout}
-            className="px-6 py-2.5 rounded-full border-2 border-destructive text-destructive font-bold text-sm hover:bg-destructive hover:text-destructive-foreground transition-all active:scale-[0.98]"
-          >
-            Log ud
-          </button>
+          <div className="flex items-center gap-3">
+            {user && (
+              <div className="flex items-center gap-2">
+                {getAvatarUrl() ? (
+                  <img
+                    src={getAvatarUrl()!}
+                    alt={user.username}
+                    className="w-8 h-8 rounded-full border border-border"
+                  />
+                ) : (
+                  <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground text-xs font-bold">
+                    {user.username.charAt(0).toUpperCase()}
+                  </div>
+                )}
+                <span className="text-sm font-semibold text-foreground hidden sm:inline">
+                  {user.username}
+                </span>
+              </div>
+            )}
+            <button
+              onClick={handleLogout}
+              className="px-6 py-2.5 rounded-full border-2 border-destructive text-destructive font-bold text-sm hover:bg-destructive hover:text-destructive-foreground transition-all active:scale-[0.98]"
+            >
+              Log ud
+            </button>
+          </div>
         ) : (
           <button
-            onClick={login}
+            onClick={() => navigate("/employee/login")}
             className="px-6 py-2.5 rounded-full border-2 border-primary text-primary font-bold text-sm hover:bg-primary hover:text-primary-foreground transition-all active:scale-[0.98]"
           >
             Log ind

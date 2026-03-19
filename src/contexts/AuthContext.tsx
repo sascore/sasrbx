@@ -1,29 +1,45 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+
+export interface DiscordUser {
+  id: string;
+  username: string;
+  email: string;
+  avatar: string | null;
+}
 
 interface AuthContextType {
   isLoggedIn: boolean;
-  username: string;
-  login: () => void;
+  user: DiscordUser | null;
+  login: (user: DiscordUser) => void;
   logout: () => void;
 }
 
-const defaultAuth: AuthContextType = {
+const AuthContext = createContext<AuthContextType>({
   isLoggedIn: false,
-  username: "",
+  user: null,
   login: () => {},
   logout: () => {},
-};
-
-const AuthContext = createContext<AuthContextType>(defaultAuth);
+});
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState<DiscordUser | null>(() => {
+    const stored = localStorage.getItem("discord_user");
+    return stored ? JSON.parse(stored) : null;
+  });
 
-  const login = () => setIsLoggedIn(true);
-  const logout = () => setIsLoggedIn(false);
+  const login = (discordUser: DiscordUser) => {
+    setUser(discordUser);
+    localStorage.setItem("discord_user", JSON.stringify(discordUser));
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem("discord_user");
+    localStorage.removeItem("discord_access_token");
+  };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, username: "Falke", login, logout }}>
+    <AuthContext.Provider value={{ isLoggedIn: !!user, user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

@@ -26,6 +26,7 @@ const App = () => (
           <Route path="/employee" element={<EmployeeLayout />}>
             <Route index element={<EmployeeDashboard />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="callback" element={<DiscordCallbackPage />} />
             <Route path="flights" element={<FlightsPage />} />
             <Route path="messages" element={<MessagesPage />} />
             <Route path="absence" element={<AbsencePage />} />

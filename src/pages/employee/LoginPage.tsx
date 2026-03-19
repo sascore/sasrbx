@@ -1,11 +1,23 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import loginPlane from "@/assets/login-plane.png";
 import sasLogo from "@/assets/sas.svg";
+import { useAuth } from "@/contexts/AuthContext";
 
-const DISCORD_CLIENT_ID = "YOUR_DISCORD_CLIENT_ID";
-const REDIRECT_URI = `${window.location.origin}/employee/login/callback`;
-const DISCORD_AUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify%20guilds`;
+const DISCORD_CLIENT_ID = "1483937727186604212";
+const REDIRECT_URI = `${window.location.origin}/employee/callback`;
+const DISCORD_AUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=identify%20email`;
 
 const LoginPage = () => {
+  const { isLoggedIn } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/employee", { replace: true });
+    }
+  }, [isLoggedIn, navigate]);
+
   const handleDiscordLogin = () => {
     window.location.href = DISCORD_AUTH_URL;
   };
