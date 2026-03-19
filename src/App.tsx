@@ -12,6 +12,7 @@ import AbsencePage from "./pages/employee/AbsencePage";
 import DocumentsPage from "./pages/employee/DocumentsPage";
 import SettingsPage from "./pages/employee/SettingsPage";
 import LoginPage from "./pages/employee/LoginPage";
+import DiscordCallbackPage from "./pages/employee/DiscordCallbackPage";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
