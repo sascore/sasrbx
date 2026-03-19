@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Plane, AlertTriangle, DollarSign, Calendar, CheckCircle } from "lucide-react";
 import StatCard from "@/components/StatCard";
 import { currentEmployee, assignedFlights } from "@/data/mockData";
+import { useAuth } from "@/contexts/AuthContext";
 
 const periods = ["Week", "Month", "Year"] as const;
 
 const EmployeeDashboard = () => {
+  const { user } = useAuth();
   const [period, setPeriod] = useState<(typeof periods)[number]>("Month");
 
   const flightsByPeriod = {
@@ -18,7 +20,7 @@ const EmployeeDashboard = () => {
     <div className="max-w-6xl">
       {/* Greeting */}
       <h1 className="text-3xl font-bold mb-8">
-        👋 Hej, {currentEmployee.discordUsername}!
+        👋 Hej, {user?.username || currentEmployee.discordUsername}!
       </h1>
 
       {/* Stats */}

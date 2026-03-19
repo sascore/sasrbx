@@ -12,6 +12,7 @@ import AbsencePage from "./pages/employee/AbsencePage";
 import DocumentsPage from "./pages/employee/DocumentsPage";
 import SettingsPage from "./pages/employee/SettingsPage";
 import LoginPage from "./pages/employee/LoginPage";
+import DiscordCallbackPage from "./pages/employee/DiscordCallbackPage";
 import NotFound from "./pages/NotFound";
 
 const App = () => (
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/employee" element={<EmployeeLayout />}>
             <Route index element={<EmployeeDashboard />} />
             <Route path="login" element={<LoginPage />} />
+            <Route path="callback" element={<DiscordCallbackPage />} />
             <Route path="flights" element={<FlightsPage />} />
             <Route path="messages" element={<MessagesPage />} />
             <Route path="absence" element={<AbsencePage />} />
