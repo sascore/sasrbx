@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Plane, AlertTriangle, DollarSign, Calendar, CheckCircle } from "lucide-react";
 import StatCard from "@/components/StatCard";
 import { currentEmployee, assignedFlights } from "@/data/mockData";
+import { useAuth } from "@/contexts/AuthContext";
 
 const periods = ["Week", "Month", "Year"] as const;
 
