@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 const periods = ["Week", "Month", "Year"] as const;
 
 const EmployeeDashboard = () => {
+  const { user } = useAuth();
   const [period, setPeriod] = useState<(typeof periods)[number]>("Month");
 
   const flightsByPeriod = {
