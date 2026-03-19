@@ -20,7 +20,7 @@ const EmployeeDashboard = () => {
     <div className="max-w-6xl">
       {/* Greeting */}
       <h1 className="text-3xl font-bold mb-8">
-        👋 Hej, {currentEmployee.discordUsername}!
+        👋 Hej, {user?.username || currentEmployee.discordUsername}!
       </h1>
 
       {/* Stats */}
