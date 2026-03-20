@@ -1,16 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
 
-/**
- * Discord OAuth2 callback handler.
- * 
- * Currently: Exchanges the authorization code for user data directly via Discord API.
- * This works for development but exposes the token exchange on the client side.
- * 
- * For production: Replace the token exchange with a backend endpoint (e.g., Supabase Edge Function)
- * that securely exchanges the code using the client secret server-side.
- */
 const DiscordCallbackPage = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -38,36 +30,30 @@ const DiscordCallbackPage = () => {
 
   const handleCallback = async (code: string) => {
     try {
-      // TODO: Replace this with a secure backend call that exchanges the code
-      // using the client secret. For now, we store the code and simulate login.
-      // 
-      // Production flow:
-      // 1. Send `code` to your backend (e.g., /api/discord/callback)
-      // 2. Backend exchanges code + client_secret for access_token
-      // 3. Backend fetches user from Discord API
-      // 4. Backend returns user data to frontend
-      //
-      // For now, we'll attempt a direct token exchange which requires
-      // a backend endpoint to be set up. Until then, we use a placeholder flow.
+      const redirectUri = `${window.location.origin}/employee/callback`;
 
-      // Placeholder: Store that we received a valid code and redirect
-      // In a real setup, this would call your backend
-      console.log("Discord OAuth2 code received:", code);
-      
-      // Since we can't exchange the code without the client secret on the frontend,
-      // we'll need a backend. For now, let's show that the flow works
-      // and store a temporary session.
-      
-      // When backend is ready, replace this with:
-      // const response = await fetch('/api/auth/discord/callback', { 
-      //   method: 'POST', 
-      //   body: JSON.stringify({ code }) 
-      // });
-      // const userData = await response.json();
-      // login(userData);
+      const { data, error: fnError } = await supabase.functions.invoke(
+        "discord-callback",
+        {
+          body: { code, redirect_uri: redirectUri },
+        }
+      );
 
-      setError("Discord OAuth2 flow works! A backend is needed to complete the token exchange securely. Set up a Supabase Edge Function to exchange the code for user data.");
-      
+      if (fnError || data?.error) {
+        console.error("Discord callback error:", fnError || data?.error);
+        setError("Failed to complete login. Please try again.");
+        setTimeout(() => navigate("/employee/login", { replace: true }), 3000);
+        return;
+      }
+
+      login({
+        id: data.id,
+        username: data.username,
+        email: data.email,
+        avatar: data.avatar,
+      });
+
+      navigate("/employee", { replace: true });
     } catch (err) {
       console.error("Discord callback error:", err);
       setError("Failed to complete login. Please try again.");

@@ -10,8 +10,8 @@ const EmployeeLayout = () => {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Allow login page without auth
-  if (location.pathname === "/employee/login") {
+  // Allow login and callback pages without auth
+  if (location.pathname === "/employee/login" || location.pathname === "/employee/callback") {
     return <Outlet />;
   }
 
