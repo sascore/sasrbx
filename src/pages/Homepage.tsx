@@ -1,31 +1,9 @@
 import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
 import heroBg from "@/assets/hero-bg.png";
-import articleHiring from "@/assets/article-hiring.png";
-import article80Years from "@/assets/article-80years.png";
-import articleCph from "@/assets/article-cph.png";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-
-const articles = [
-  {
-    image: articleHiring,
-    title: "WE ARE HIRING",
-    description: "Click on this article, to read more about careers at SAS.",
-  },
-  {
-    image: article80Years,
-    title: "CELEBRATING 80 YEARS",
-    description:
-      "We at SAS Scandinavian Airlines are proud to celebrate 80 years. Click on this article, to read more about our celebration.",
-  },
-  {
-    image: articleCph,
-    title: "COPENHAGEN DEVELOPMENT",
-    description:
-      "We are at the moment developing on CPH Copenhagen Airport. Click on this article, to read more about the development on CPH Copenhagen Airport.",
-  },
-];
+import { articles } from "@/data/articles";
 
 const Homepage = () => {
   return (
@@ -77,8 +55,9 @@ const Homepage = () => {
           <h2 className="text-2xl font-bold text-foreground mb-8">Latest Articles</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {articles.map((article) => (
-              <div
-                key={article.title}
+              <Link
+                key={article.slug}
+                to={`/articles/${article.slug}`}
                 className="rounded-xl overflow-hidden border border-border bg-background hover:shadow-lg transition-shadow cursor-pointer group"
               >
                 <div className="aspect-video overflow-hidden">
@@ -96,7 +75,7 @@ const Homepage = () => {
                     {article.description}
                   </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-8">

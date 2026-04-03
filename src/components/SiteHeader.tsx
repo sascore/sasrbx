@@ -9,7 +9,7 @@ const SiteHeader = () => (
     <nav className="flex items-center gap-6">
       <Link to="/" className="text-sm font-semibold text-foreground hover:text-primary transition-colors">Home</Link>
       <Link to="/departures" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Flights</Link>
-      <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">FAQ</a>
+      <Link to="/faq" className="text-sm text-muted-foreground hover:text-foreground transition-colors">FAQ</Link>
     </nav>
   </header>
 );

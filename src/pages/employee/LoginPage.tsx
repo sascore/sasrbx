@@ -4,7 +4,7 @@ import loginPlane from "@/assets/login-plane.png";
 import sasLogo from "@/assets/sas.svg";
 import { useAuth } from "@/contexts/AuthContext";
 
-const DISCORD_CLIENT_ID = "1483937727186604212";
+const DISCORD_CLIENT_ID = "1489716332323934328";
 const OAUTH_STATE_KEY = "discord_oauth_state";
 
 const LoginPage = () => {

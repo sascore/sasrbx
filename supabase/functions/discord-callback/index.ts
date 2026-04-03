@@ -25,7 +25,7 @@ serve(async (req) => {
       );
     }
 
-    const CLIENT_ID = "1483937727186604212";
+    const CLIENT_ID = "1489716332323934328";
     const CLIENT_SECRET = Deno.env.get("DISCORD_CLIENT_SECRET");
 
     if (!CLIENT_SECRET) {

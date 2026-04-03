@@ -4,6 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Homepage from "./pages/Homepage";
 import DeparturesPage from "./pages/DeparturesPage";
+import ArticlesPage from "./pages/ArticlesPage";
+import ArticleDetailPage from "./pages/ArticleDetailPage";
+import FAQPage from "./pages/FAQPage";
 import EmployeeLayout from "./components/EmployeeLayout";
 import EmployeeDashboard from "./pages/employee/EmployeeDashboard";
 import FlightsPage from "./pages/employee/FlightsPage";
@@ -23,6 +26,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Homepage />} />
           <Route path="/departures" element={<DeparturesPage />} />
+          <Route path="/articles" element={<ArticlesPage />} />
+          <Route path="/articles/:slug" element={<ArticleDetailPage />} />
+          <Route path="/faq" element={<FAQPage />} />
           <Route path="/employee" element={<EmployeeLayout />}>
             <Route index element={<EmployeeDashboard />} />
             <Route path="login" element={<LoginPage />} />
