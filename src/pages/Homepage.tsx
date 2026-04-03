@@ -1,16 +1,31 @@
 import { Link } from "react-router-dom";
 import { ExternalLink } from "lucide-react";
 import heroBg from "@/assets/hero-bg.png";
+import articleHiring from "@/assets/article-hiring.png";
+import article80Years from "@/assets/article-80years.png";
+import articleCph from "@/assets/article-cph.png";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 
-const WaveDivider = () => (
-  <div className="flex justify-center py-6">
-    <svg width="120" height="20" viewBox="0 0 120 20" fill="none" className="text-muted-foreground/30">
-      <path d="M0 10 Q10 0 20 10 T40 10 T60 10 T80 10 T100 10 T120 10" stroke="currentColor" strokeWidth="2" fill="none" />
-    </svg>
-  </div>
-);
+const articles = [
+  {
+    image: articleHiring,
+    title: "WE ARE HIRING",
+    description: "Click on this article, to read more about careers at SAS.",
+  },
+  {
+    image: article80Years,
+    title: "CELEBRATING 80 YEARS",
+    description:
+      "We at SAS Scandinavian Airlines are proud to celebrate 80 years. Click on this article, to read more about our celebration.",
+  },
+  {
+    image: articleCph,
+    title: "COPENHAGEN DEVELOPMENT",
+    description:
+      "We are at the moment developing on CPH Copenhagen Airport. Click on this article, to read more about the development on CPH Copenhagen Airport.",
+  },
+];
 
 const Homepage = () => {
   return (
@@ -18,13 +33,15 @@ const Homepage = () => {
       <SiteHeader />
 
       {/* Hero */}
-      <section className="relative w-full overflow-hidden" style={{ height: '400px' }}>
+      <section className="relative w-full overflow-hidden" style={{ height: "400px" }}>
         <img src={heroBg} alt="SAS Aircraft" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
         <div className="absolute bottom-10 left-0 right-0 px-8">
           <div className="max-w-6xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-black text-white leading-tight drop-shadow-lg">
-              Welcome to journeys<br />that matter
+              Welcome to journeys
+              <br />
+              that matter
             </h1>
           </div>
         </div>
@@ -54,43 +71,46 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* What are you waiting for? */}
-      <section className="bg-secondary text-secondary-foreground">
-        <div className="max-w-4xl mx-auto px-8 py-16 text-center">
-          <WaveDivider />
-          <h2 className="text-3xl md:text-4xl font-black mb-3">What are you waiting for?</h2>
-          <p className="text-muted-foreground mb-8">
-            Join us today and discover the future with <span className="font-bold text-secondary-foreground">SAS</span>!
-          </p>
-          <Link
-            to="/departures"
-            className="inline-flex items-center px-6 py-3 text-sm font-bold rounded-md bg-background text-foreground hover:bg-muted transition-all"
-          >
-            See upcoming flights
-          </Link>
-          <WaveDivider />
+      {/* Articles Section */}
+      <section className="bg-background">
+        <div className="max-w-6xl mx-auto px-8 py-14">
+          <h2 className="text-2xl font-bold text-foreground mb-8">Latest Articles</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {articles.map((article) => (
+              <div
+                key={article.title}
+                className="rounded-xl overflow-hidden border border-border bg-background hover:shadow-lg transition-shadow cursor-pointer group"
+              >
+                <div className="aspect-video overflow-hidden">
+                  <img
+                    src={article.image}
+                    alt={article.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-sm font-bold text-foreground tracking-wide mb-2">
+                    {article.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {article.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link
+              to="/articles"
+              className="inline-flex items-center px-6 py-2.5 text-sm font-bold rounded-full border border-border text-foreground hover:bg-muted transition-all"
+            >
+              See all articles
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Looking for a job? */}
-      <section className="bg-secondary text-secondary-foreground">
-        <div className="max-w-4xl mx-auto px-8 pb-20 text-center">
-          <h2 className="text-2xl md:text-3xl font-black mb-3">Looking for a job?</h2>
-          <p className="text-muted-foreground mb-6">
-            Come checkout if we have any open positions for you to apply for!
-          </p>
-          <a
-            href="https://discord.gg/GWyQ3NCbA4"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-bold text-secondary-foreground hover:underline"
-          >
-            Discord Server (13+) <ExternalLink className="w-3.5 h-3.5" />
-          </a>
-        </div>
-      </section>
-
-      {/* Social Media — only on homepage, white background */}
+      {/* Social Media */}
       <section className="bg-background border-t border-border">
         <div className="max-w-6xl mx-auto px-8 py-10 text-center">
           <h3 className="text-lg font-bold text-foreground mb-6">Social Media</h3>
